@@ -48,4 +48,8 @@ int main() {
         // Add the connection to the queue
         connections.push(client_fd);
         
-    
+        // If the queue is full, handle the next connection in the queue
+        if (connections.size() == MAX_CONNECTIONS) {
+            int next_connection = connections.front();
+            connections.pop();
+            
