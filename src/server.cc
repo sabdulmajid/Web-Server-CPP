@@ -53,3 +53,37 @@ int main() {
             int next_connection = connections.front();
             connections.pop();
             
+            // Read the incoming HTTP request
+            char buffer[1024];
+            int num_bytes = read(next_connection, buffer, sizeof(buffer));
+            if (num_bytes == -1) {
+                std::cerr << "Failed to read request" << std::endl;
+                close(next_connection);
+                continue;
+            }
+            
+            // Parse the HTTP request
+            std::string request(buffer, num_bytes);
+            std::string response_body = "<html><body><h1>Hello, World!</h1></body></html>";
+            std::string response =
+                "HTTP/1.1 200 OK\r\n"
+                "Content-Type: text/html\r\n"
+                "Content-Length: " + std::to_string(response_body.size()) + "\r\n"
+                "\r\n" + response_body;
+            
+            // Send the HTTP response
+            num_bytes = write(next_connection, response.c_str(), response.size());
+            if (num_bytes == -1) {
+                std::cerr << "Failed to send response" << std::endl;
+            }
+            
+            // Close the connection
+            close(next_connection);
+        }
+    }
+    
+    // Close the server socket
+    close(server_fd);
+    
+    return 0;
+}
