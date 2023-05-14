@@ -26,4 +26,13 @@ int main() {
         return 1;
     }
     
+    // Listen for incoming connections
+    if (listen(server_fd, MAX_CONNECTIONS) == -1) {
+        std::cerr << "Failed to listen for connections" << std::endl;
+        return 1;
+    }
+    
+    // Create a queue to store the connections
+    std::queue<int> connections;
+    
    
