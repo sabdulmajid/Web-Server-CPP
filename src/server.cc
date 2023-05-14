@@ -15,3 +15,15 @@ int main() {
         return 1;
     }
     
+    // Bind the socket to an address and port
+    sockaddr_in address;
+    std::memset(&address, 0, sizeof(address));
+    address.sin_family = AF_INET;
+    address.sin_addr.s_addr = INADDR_ANY;
+    address.sin_port = htons(8080);
+    if (bind(server_fd, (sockaddr*)&address, sizeof(address)) == -1) {
+        std::cerr << "Failed to bind socket to address" << std::endl;
+        return 1;
+    }
+    
+   
