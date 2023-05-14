@@ -35,11 +35,11 @@ Overall, this advanced C++ web server is a powerful and versatile tool that can 
 ## Examples
 To serve the file ```index.html``` from the current directory, you can use the following command:
 
-```./server index.html```
+ - ```./server index.html```
 
 To serve all files in the current directory, you can use the following command:
 
-```./server .```
+ - ```./server .```
 
 ## Troubleshooting
 If you encounter any problems, please open an issue on the GitHub repository.
