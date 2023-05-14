@@ -35,4 +35,17 @@ int main() {
     // Create a queue to store the connections
     std::queue<int> connections;
     
-   
+    while (true) {
+        // Accept an incoming connection
+        sockaddr_in client_address;
+        socklen_t client_address_len = sizeof(client_address);
+        int client_fd = accept(server_fd, (sockaddr*)&client_address, &client_address_len);
+        if (client_fd == -1) {
+            std::cerr << "Failed to accept connection" << std::endl;
+            continue;
+        }
+        
+        // Add the connection to the queue
+        connections.push(client_fd);
+        
+    
