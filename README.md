@@ -8,7 +8,7 @@ Some of the key features of this web server include:
   3. **Supporting multiple concurrent connections**: The server can support multiple concurrent connections, which makes it ideal for handling high-traffic websites and web applications.
   4. **Supporting different HTTP methods and status codes**: The server supports a wide range of HTTP methods and status codes, which makes it compatible with a wide range of web browsers and other clients.
   5. **Supporting different protocols**: The server supports FTP, SMTP, and more recently, HTTPS as well (using SSL Encryption)
-  6. **Built-in user authentication**: The server uses a SQLite database to store user credentials, making it secure and safe to use.
+  6. **Built-in user authentication**: The server uses an SQLite database to store user credentials, making it secure and safe to use.
 
 In addition to these key features, the server also includes a number of other features that make it very powerful and adaptable:
 
@@ -26,6 +26,19 @@ Overall, this advanced C++ web server is a powerful and versatile tool that can 
   - Supports FTP, SMTP & HTTPS
   - Supports user authentication
   - Has built-in logging
+
+## Authentication Technique
+  This is an explanation for how the web server uses an SQLite database to provide secure access. The ```User``` class represents a user in the application. It has three properties: ```username```, ```password```, and ```twoFactorCode```. The login function checks the user credentials against the database. If the user is found in the database and the passwords match, the function returns ```true```. Otherwise, the function returns ```false```.
+
+The main function creates a database, creates a ```User``` object, and calls the login function. If the user is authenticated, the main function prints a welcome message and the user is given access to the server. Otherwise, the main function prints an error message and the user is denied access to the server.
+
+As for the nitty-gritty details:
+
+  - The **sqlite3** library is used to access the database.
+  - The **sqlite3_prepare** function prepares a SQL statement for execution.
+  - The **sqlite3_bind_text** function binds a string to a parameter in a SQL statement.
+  - The **sqlite3_step** function executes a SQL statement and returns the results.
+  - The **sqlite3_column_text** function returns the text value of a column in a result set.
 
 ## Example uses of this server
   - **Hosting a personal website**: This web server can be used to host a personal website. You can use it to share your thoughts, photos, and videos with the world.
