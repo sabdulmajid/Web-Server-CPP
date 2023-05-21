@@ -43,7 +43,7 @@ As for the nitty-gritty details:
   - The **sqlite3_column_text** function returns the text value of a column in a result set.
 
 Here is the code for my authentication method:
-```c++
+```js
    sqlite3 *db;
    int rc = sqlite3_open("database.db", &db);
    if (rc != SQLITE_OK) {
@@ -73,7 +73,7 @@ Here is the code for my authentication method:
 
 ## Logging
   I decided to add logging to the server to help debug any issues I ran into when trying to set up the server. Some other benefits of logging include reduced downtime, increased productivity and eventually, reduced costs. Here is the code snippet for my logging method:
-```c++
+```js
 void log(string message) {
   ofstream logfile("log.txt");
   logfile << message << endl;
@@ -84,7 +84,7 @@ void log(string message) {
 
 ## Example code & uses
 
-```c++
+```js
 std::cout << "HTTP request received" << std::endl;
 std::string response_body = "<html><body><h1>Hello, welcome to this server!</h1></body></html>";
 std::string response =
