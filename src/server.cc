@@ -53,7 +53,7 @@ int main() {
             int next_connection = connections.front();
             connections.pop();
             
-            // Read the incoming HTTP request
+            // Read the incoming request
             char buffer[1024];
             int num_bytes = read(next_connection, buffer, sizeof(buffer));
             if (num_bytes == -1) {
@@ -62,19 +62,27 @@ int main() {
                 continue;
             }
             
-            // Parse the HTTP request
+            // Parse the request
             std::string request(buffer, num_bytes);
-            std::string response_body = "<html><body><h1>Hello, World!</h1></body></html>";
-            std::string response =
-                "HTTP/1.1 200 OK\r\n"
-                "Content-Type: text/html\r\n"
-                "Content-Length: " + std::to_string(response_body.size()) + "\r\n"
-                "\r\n" + response_body;
+            std::string protocol = request.substr(0, request.find(":"));
             
-            // Send the HTTP response
-            num_bytes = write(next_connection, response.c_str(), response.size());
-            if (num_bytes == -1) {
-                std::cerr << "Failed to send response" << std::endl;
+            // Send the appropriate response
+            if (protocol == "FTP") {
+                // TODO: Implement FTP support
+            } else if (protocol == "SMTP") {
+                // TODO: Implement SMTP support
+            } else if (protocol == "HTTP") {
+                std::string response_body = "<html><body><h1>Hello, World!</h1></body></html>";
+                std::string response =
+                    "HTTP/1.1 200 OK\r\n"
+                    "Content-Type: text/html\r\n"
+                    "Content-Length: " + std::to_string(response_body.size()) + "\r\n"
+                    "\r\n" + response_body;
+                num_bytes = write(next_connection, response.c_str(), response.size());
+            } else if (protocol == "HTTPS") {
+                // TODO: Implement HTTPS support
+            } else {
+                std::cerr << "Unsupported protocol: " << protocol << std::endl;
             }
             
             // Close the connection
