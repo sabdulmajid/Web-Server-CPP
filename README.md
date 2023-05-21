@@ -29,8 +29,8 @@ Overall, this advanced C++ web server is a powerful and versatile tool that can 
   - Supports user authentication
   - Has built-in logging
 
-## Authentication Technique
-  This is an explanation for how the web server uses an SQLite database to provide secure access. The ```User``` class represents a user in the application. It has three properties: ```username```, ```password```, and ```twoFactorCode```. The login function checks the user credentials against the database. If the user is found in the database and the passwords match, the function returns ```true```. Otherwise, the function returns ```false```.
+## Authentication
+  As for how the web server uses an SQLite database to provide secure access: The ```User``` class represents a user in the application. It has three properties: ```username```, ```password```, and ```twoFactorCode```. The login function checks the user credentials against the database. If the user is found in the database and the passwords match, the function returns ```true```. Otherwise, the function returns ```false```.
 
 The main function creates a database, creates a ```User``` object, and calls the login function. If the user is authenticated, the main function prints a welcome message and the user is given access to the server. Otherwise, the main function prints an error message and the user is denied access to the server.
 
@@ -42,7 +42,58 @@ As for the nitty-gritty details:
   - The **sqlite3_step** function executes a SQL statement and returns the results.
   - The **sqlite3_column_text** function returns the text value of a column in a result set.
 
-## Example uses of this server
+Here is the code for my authentication method:
+```js
+   sqlite3 *db;
+   int rc = sqlite3_open("database.db", &db);
+   if (rc != SQLITE_OK) {
+       cout << "Error opening database: " << sqlite3_errmsg(db) << endl;
+   }
+
+   User user;
+   user.username = "username";
+   user.password = "password";
+   user.twoFactorCode = "twoFactorCode";
+
+   bool isAuthenticated = login(user.username, user.password, user.twoFactorCode);
+   if (!isAuthenticated) {
+       cout << "Invalid username or password" << endl;
+   }
+
+   cout << "Welcome to the application, " << user.username << "!" << endl;
+
+   sqlite3_close(db);
+
+   if (isAuthenticated) {
+       cout << "You are now authenticated and have access to the web server." << endl;
+   } else {
+       cout << "You are not authenticated and do not have access to the web server." << endl;
+   }
+```
+
+## Logging
+  I decided to add logging to the server to help debug any issues I ran into when trying to set up the server. Some other benefits of logging include reduced downtime, increased productivity and eventually, reduced costs. Here is the code snippet for my logging method:
+```js
+void log(string message) {
+  ofstream logfile("log.txt");
+  logfile << message << endl;
+  logfile.close();
+}
+
+```
+
+## Example code & uses
+
+```js
+std::cout << "HTTP request received" << std::endl;
+std::string response_body = "<html><body><h1>Hello, welcome to this server!</h1></body></html>";
+std::string response =
+    "HTTP/1.1 200 OK\r\n"
+    "Content-Type: text/html\r\n"
+    "Content-Length: " + std::to_string(response_body.size()) + "\r\n"
+    "\r\n" + response_body;
+num_bytes = write(next_connection, response.c_str(), response.size());
+```
   - **Hosting a personal website**: This web server can be used to host a personal website. You can use it to share your thoughts, photos, and videos with the world.
   - **Creating a web application**: This web server can be used to create a web application. You can use it to build a variety of applications, such as a blog, a forum, or an online store.
   - **Running a test server**: This web server can be used to run a test server. You can use it to test your web applications before you deploy them to a production server.
@@ -60,7 +111,7 @@ As for the nitty-gritty details:
      * The server will listen on ```port 8080``` by default
       * You can then access the server by visiting ```http://localhost:8080``` in your web browser
 
-## Examples
+## Serving
 To serve the file ```index.html``` from the current directory, you can use the following command:
 
  - ```./server index.html```
