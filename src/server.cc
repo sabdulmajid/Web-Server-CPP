@@ -39,6 +39,10 @@ int main()
     // Create a queue to store the connections
     std::queue<int> connections;
 
+    // Logging variables
+    // Initialize the logging object
+    ofstream logfile("log.txt");
+
     while (true)
     {
         // Accept an incoming connection
@@ -74,6 +78,14 @@ int main()
             std::string request(buffer, num_bytes);
             std::string protocol = request.substr(0, request.find(":"));
 
+            // Log the request
+            {
+                ofstream logfile("log.txt");
+                logfile << "Received a request from " + client_address.sin_addr.s_addr << endl;
+                logfile << "Received the request: " + request << endl;
+                logfile.close();
+            }
+
             // Send the appropriate response
             if (protocol == "FTP")
             {
@@ -83,6 +95,13 @@ int main()
                 std::string response =
                     "220 Welcome to my FTP server\r\n";
                 num_bytes = write(next_connection, response.c_str(), response.size());
+
+                // Log the response
+                {
+                    ofstream logfile("log.txt");
+                    logfile << "Sending the response: " + response << endl;
+                    logfile.close();
+                }
             }
             else if (protocol == "SMTP")
             {
@@ -110,6 +129,9 @@ int main()
         }
         else if (protocol == "HTTPS")
         {
+            // Log the response
+            logfile << "Sending the response: " + response << endl;
+
             // Implement HTTPS support
             std::cout << "HTTPS request received" << std::endl;
             // Create an SSL context
@@ -169,4 +191,6 @@ int main()
             close(next_connection);
         }
     }
+    // Close the logging object
+    logfile.close();
 }
