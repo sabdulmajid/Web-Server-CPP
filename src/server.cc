@@ -107,22 +107,66 @@ int main()
                     response_body;
                 num_bytes = write(next_connection, response.c_str(), response.size());
             }
-            else if (protocol == "HTTPS")
+        }
+        else if (protocol == "HTTPS")
+        {
+            // Implement HTTPS support
+            std::cout << "HTTPS request received" << std::endl;
+            // Create an SSL context
+            SSL_CTX *ctx = SSL_CTX_new(SSLv23_client_method());
+            if (ctx == NULL)
             {
-                // TODO: Implement HTTPS support
+                std::cerr << "Failed to create SSL context" << std::endl;
+                return 1;
             }
-            else
+
+            // Create an SSL object
+            SSL *ssl = SSL_new(ctx);
+            if (ssl == NULL)
             {
-                std::cerr << "Unsupported protocol: " << protocol << std::endl;
+                std::cerr << "Failed to create SSL object" << std::endl;
+                return 1;
             }
+
+            // Set the socket non-blocking
+            int flags = fcntl(next_connection, F_GETFL, 0);
+            fcntl(next_connection, F_SETFL, flags | O_NONBLOCK);
+
+            // Bind the SSL object to the socket
+            if (SSL_bind(ssl, next_connection) == -1)
+            {
+                std::cerr << "Failed to bind SSL object to socket" << std::endl;
+                return 1;
+            }
+
+            // Start the SSL handshake
+            if (SSL_accept(ssl) == -1)
+            {
+                std::cerr << "Failed to start SSL handshake" << std::endl;
+                return 1;
+            }
+
+            // Send the HTTP response
+            std::string response_body = "<html><body><h1>Hello, World!</h1></body></html>";
+            std::string response =
+                "HTTP/1.1 200 OK\r\n"
+                "Content-Type: text/html\r\n"
+                "Content-Length: " +
+                std::to_string(response_body.size()) + "\r\n"
+                                                       "\r\n" +
+                response_body;
+            num_bytes = SSL_write(ssl, response.c_str(), response.size());
+            if (num_bytes == -1)
+            {
+                std::cerr << "Failed to write HTTP response" << std::endl;
+                return 1;
+            }
+
+            // Close the SSL object
+            SSL_free(ssl);
 
             // Close the connection
             close(next_connection);
         }
     }
-
-    // Close the server socket
-    close(server_fd);
-
-    return 0;
 }
