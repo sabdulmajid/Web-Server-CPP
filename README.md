@@ -21,6 +21,9 @@ Overall, this advanced C++ web server is a powerful and versatile tool that can 
   - Handles HTTP requests
   - Supports multiple concurrent connections
   - Supports different HTTP methods and status codes
+  - Supports FTP, SMTP & HTTPS
+  - Supports user authentication
+  
 ## Requirements
   - C++ compiler
   - GNU Make
@@ -46,3 +49,5 @@ If you encounter any problems, please open an issue on the GitHub repository.
 
 ## Additional Information
 This web server is still under development, but it is already a powerful tool that can be used to create a variety of web applications. If you have any suggestions for improvements, please feel free to open an issue on the GitHub repository.
+
+Thank you for using this web server!
