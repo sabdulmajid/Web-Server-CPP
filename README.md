@@ -23,6 +23,13 @@ Overall, this advanced C++ web server is a powerful and versatile tool that can 
   - Supports different HTTP methods and status codes
   - Supports FTP, SMTP & HTTPS
   - Supports user authentication
+
+## Example uses of this server
+  - **Hosting a personal website**: This web server can be used to host a personal website. You can use it to share your thoughts, photos, and videos with the world.
+  - **Creating a web application**: This web server can be used to create a web application. You can use it to build a variety of applications, such as a blog, a forum, or an online store.
+  - **Running a test server**: This web server can be used to run a test server. You can use it to test your web applications before you deploy them to a production server.
+  - **Providing file sharing**: This web server can be used to provide file sharing. You can use it to share files with friends, family, or colleagues.
+  - **Hosting a game server**: This web server can be used to host a game server. You can use it to host multiplayer games, such as Minecraft or Counter-Strike.
   
 ## Requirements
   - C++ compiler
