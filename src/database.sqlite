@@ -1,0 +1,30 @@
+CREATE TABLE users (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  username TEXT NOT NULL,
+  password TEXT NOT NULL
+);
+
+INSERT INTO users (username, password) VALUES ('user1', 'password1');
+INSERT INTO users (username, password) VALUES ('user2', 'password2');
+
+CREATE TABLE posts (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  title TEXT NOT NULL,
+  body TEXT NOT NULL,
+  author_id INTEGER NOT NULL,
+  created_at DATETIME NOT NULL
+);
+
+INSERT INTO posts (title, body, author_id, created_at) VALUES ('My First Post', 'This is my first post.', 1, '2023-05-21');
+INSERT INTO posts (title, body, author_id, created_at) VALUES ('My Second Post', 'This is my second post.', 2, '2023-05-22');
+
+CREATE TABLE comments (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  post_id INTEGER NOT NULL,
+  author_id INTEGER NOT NULL,
+  body TEXT NOT NULL,
+  created_at DATETIME NOT NULL
+);
+
+INSERT INTO comments (post_id, author_id, body, created_at) VALUES (1, 1, 'This is my first comment.', '2023-05-21');
+INSERT INTO comments (post_id, author_id, body, created_at) VALUES (2, 2, 'This is my second comment.', '2023-05-22');
