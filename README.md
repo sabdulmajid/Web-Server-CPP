@@ -89,7 +89,9 @@ std::cout << "HTTP request received" << std::endl;
 std::string response_body = "<html><body><h1>Hello, welcome to this server!</h1></body></html>";
 std::string response =
     "HTTP/1.1 200 OK\r\n"
-    "Content-Type: text/html\r\n" + "Content-Length: " + std::to_string(response_body.size()) + "\r\n" + "\r\n" + response_body;
+    "Content-Type: text/html\r\n"
+    "Content-Length: " + std::to_string(response_body.size()) + "\r\n"
+    "\r\n" + response_body;
 num_bytes = write(next_connection, response.c_str(), response.size());
 ```
   - **Hosting a personal website**: This web server can be used to host a personal website. You can use it to share your thoughts, photos, and videos with the world.
