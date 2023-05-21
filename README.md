@@ -7,6 +7,7 @@ Some of the key features of this web server include:
   2. **Handling HTTP requests**: The server can handle a variety of HTTP requests, including GET, POST, PUT, and DELETE. This allows it to be used to implement a wide range of web functionality.
   3. **Supporting multiple concurrent connections**: The server can support multiple concurrent connections, which makes it ideal for handling high-traffic websites and web applications.
   4. **Supporting different HTTP methods and status codes**: The server supports a wide range of HTTP methods and status codes, which makes it compatible with a wide range of web browsers and other clients.
+  5. **Supporting different protocols**: The server supports FTP, SMTP, and more recently, HTTPS as well (using SSL Encryption)
 
 In addition to these key features, the server also includes a number of other features that make it very powerful and adaptable:
 
