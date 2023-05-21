@@ -1,7 +1,7 @@
 ![logo-no-background](https://github.com/sabdulmajid/Web-Server-CPP/assets/85283195/88001578-2ee9-4e34-98f1-5ae7c04c7f0c)
 
 # C++ WebServus
-This C++ web server is a powerful tool that can be used to serve static files and handle HTTP requests. The server supports multiple concurrent connections and different HTTP methods and status codes.
+This **C++ web server** is a powerful tool that can be used to serve static files and handle **FTP**, **SMTP**, **HTTP** & **HTTPS** requests. The server supports multiple **concurrent connections** and different protocol methods & status codes. It also has an **SQLite** user database, which is used for user authentication.
 
 Some of the key features of this web server include:
 
