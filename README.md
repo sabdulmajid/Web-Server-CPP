@@ -24,6 +24,7 @@ Overall, this advanced C++ web server is a powerful and versatile tool that can 
   - Supports different HTTP methods and status codes
   - Supports FTP, SMTP & HTTPS
   - Supports user authentication
+  - Has built-in logging
 
 ## Example uses of this server
   - **Hosting a personal website**: This web server can be used to host a personal website. You can use it to share your thoughts, photos, and videos with the world.
