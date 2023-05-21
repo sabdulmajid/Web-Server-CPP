@@ -7,6 +7,7 @@ Some of the key features of this web server include:
   2. **Handling HTTP requests**: The server can handle a variety of HTTP requests, including GET, POST, PUT, and DELETE. This allows it to be used to implement a wide range of web functionality.
   3. **Supporting multiple concurrent connections**: The server can support multiple concurrent connections, which makes it ideal for handling high-traffic websites and web applications.
   4. **Supporting different HTTP methods and status codes**: The server supports a wide range of HTTP methods and status codes, which makes it compatible with a wide range of web browsers and other clients.
+  5. **Supporting different protocols**: The server supports FTP, SMTP, and more recently, HTTPS as well (using SSL Encryption)
 
 In addition to these key features, the server also includes a number of other features that make it very powerful and adaptable:
 
@@ -21,6 +22,16 @@ Overall, this advanced C++ web server is a powerful and versatile tool that can 
   - Handles HTTP requests
   - Supports multiple concurrent connections
   - Supports different HTTP methods and status codes
+  - Supports FTP, SMTP & HTTPS
+  - Supports user authentication
+
+## Example uses of this server
+  - **Hosting a personal website**: This web server can be used to host a personal website. You can use it to share your thoughts, photos, and videos with the world.
+  - **Creating a web application**: This web server can be used to create a web application. You can use it to build a variety of applications, such as a blog, a forum, or an online store.
+  - **Running a test server**: This web server can be used to run a test server. You can use it to test your web applications before you deploy them to a production server.
+  - **Providing file sharing**: This web server can be used to provide file sharing. You can use it to share files with friends, family, or colleagues.
+  - **Hosting a game server**: This web server can be used to host a game server. You can use it to host multiplayer games, such as Minecraft or Counter-Strike.
+  
 ## Requirements
   - C++ compiler
   - GNU Make
@@ -43,3 +54,8 @@ To serve all files in the current directory, you can use the following command:
 
 ## Troubleshooting
 If you encounter any problems, please open an issue on the GitHub repository.
+
+## Additional Information
+This web server is still under development, but it is already a powerful tool that can be used to create a variety of web applications. If you have any suggestions for improvements, please feel free to open an issue on the GitHub repository.
+
+Thank you for using this web server!
