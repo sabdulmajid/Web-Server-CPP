@@ -43,3 +43,6 @@ To serve all files in the current directory, you can use the following command:
 
 ## Troubleshooting
 If you encounter any problems, please open an issue on the GitHub repository.
+
+## Additional Information
+This web server is still under development, but it is already a powerful tool that can be used to create a variety of web applications. If you have any suggestions for improvements, please feel free to open an issue on the GitHub repository.
