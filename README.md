@@ -30,7 +30,7 @@ Overall, this advanced C++ web server is a powerful and versatile tool that can 
   - Has built-in logging
 
 ## Authentication
-  This is an explanation for how the web server uses an SQLite database to provide secure access. The ```User``` class represents a user in the application. It has three properties: ```username```, ```password```, and ```twoFactorCode```. The login function checks the user credentials against the database. If the user is found in the database and the passwords match, the function returns ```true```. Otherwise, the function returns ```false```.
+  As for how the web server uses an SQLite database to provide secure access: The ```User``` class represents a user in the application. It has three properties: ```username```, ```password```, and ```twoFactorCode```. The login function checks the user credentials against the database. If the user is found in the database and the passwords match, the function returns ```true```. Otherwise, the function returns ```false```.
 
 The main function creates a database, creates a ```User``` object, and calls the login function. If the user is authenticated, the main function prints a welcome message and the user is given access to the server. Otherwise, the main function prints an error message and the user is denied access to the server.
 
