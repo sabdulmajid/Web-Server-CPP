@@ -22,15 +22,15 @@ Overall, this advanced C++ web server is a powerful and versatile tool that can 
 
 ## Features
   - Serves static files
-  - Handles HTTP requests
+  - Handles [HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP) requests
   - Supports multiple concurrent connections
   - Supports different HTTP methods and status codes
-  - Supports FTP, SMTP & HTTPS
+  - Supports [FTP](https://developer.mozilla.org/en-US/docs/Glossary/FTP), [SMTP](https://developer.mozilla.org/en-US/docs/Glossary/SMTP) & [HTTPS](https://developer.mozilla.org/en-US/docs/Glossary/HTTPS)
   - Supports user authentication
   - Has built-in logging
 
 ## Authentication
-  As for how the web server uses an SQLite database to provide secure access: The ```User``` class represents a user in the application. It has three properties: ```username```, ```password```, and ```twoFactorCode```. The login function checks the user credentials against the database. If the user is found in the database and the passwords match, the function returns ```true```. Otherwise, the function returns ```false```.
+  As for how the web server uses an [SQLite database](https://www.sqlite.org/docs.html) to provide secure access: The ```User``` class represents a user in the application. It has three properties: ```username```, ```password```, and ```twoFactorCode```. The login function checks the user credentials against the database. If the user is found in the database and the passwords match, the function returns ```true```. Otherwise, the function returns ```false```.
 
 The main function creates a database, creates a ```User``` object, and calls the login function. If the user is authenticated, the main function prints a welcome message and the user is given access to the server. Otherwise, the main function prints an error message and the user is denied access to the server.
 
@@ -101,8 +101,8 @@ num_bytes = write(next_connection, response.c_str(), response.size());
   - **Hosting a game server**: This web server can be used to host a game server. You can use it to host multiplayer games, such as Minecraft or Counter-Strike.
   
 ## Requirements
-  - C++ compiler
-  - GNU Make
+  - [C++ compiler](https://en.wikipedia.org/wiki/List_of_compilers#C++_compilers)
+  - [GNU Make](https://www.gnu.org/software/make/)
 
 ## Getting Started
   1. Clone the repository
