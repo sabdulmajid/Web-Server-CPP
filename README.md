@@ -8,6 +8,7 @@ Some of the key features of this web server include:
   3. **Supporting multiple concurrent connections**: The server can support multiple concurrent connections, which makes it ideal for handling high-traffic websites and web applications.
   4. **Supporting different HTTP methods and status codes**: The server supports a wide range of HTTP methods and status codes, which makes it compatible with a wide range of web browsers and other clients.
   5. **Supporting different protocols**: The server supports FTP, SMTP, and more recently, HTTPS as well (using SSL Encryption)
+  6. **Built-in user authentication**: The server uses a SQLite database to store user credentials, making it secure and safe to use.
 
 In addition to these key features, the server also includes a number of other features that make it very powerful and adaptable:
 
